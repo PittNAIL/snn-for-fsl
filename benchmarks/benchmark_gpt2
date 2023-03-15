@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+printf "Benchmarking GPT-2...\n\n"
+
+# Generating benchmarks for 8-shot and 16-shot is not necessary (will be included in the 4-shot)
+printf "GPT-2 (4 Shots)\n================================\n"
+../gpt2.py --model gpt2 \
+           --shots 4 \
+           --path "$1" \
+           --eval_iter 1 \
+           --log_dir gpt2 2>/dev/null
+
+printf "\nDone!\n"
