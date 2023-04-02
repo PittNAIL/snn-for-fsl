@@ -1,0 +1,67 @@
+#!/usr/bin/env sh
+printf "Benchmarking Siamese Neural Network with Second-Order Embeddings (SOE-SNN)...\n\n"
+
+printf "BERT (4 Shots)\n================================\n"
+../soe_snn.py --model bert \
+              --shots 4 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nBioBERT (4 Shots)\n================================\n"
+../soe_snn.py --model biobert \
+              --shots 4 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nBioClinicalBERT (4 Shots)\n================================\n"
+../soe_snn.py --model bioclinicalbert \
+              --shots 4 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nBERT (8 Shots)\n================================\n"
+../soe_snn.py --model bert \
+              --shots 8 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nBioBERT (8 Shots)\n================================\n"
+../soe_snn.py --model biobert \
+              --shots 8 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nBioClinicalBERT (8 Shots)\n================================\n"
+../soe_snn.py --model bioclinicalbert \
+              --shots 8 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nBERT (16 Shots)\n================================\n"
+../soe_snn.py --model bert \
+              --shots 16 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nBioBERT (16 Shots)\n================================\n"
+../soe_snn.py --model biobert \
+              --shots 16 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nBioClinicalBERT (16 Shots)\n================================\n"
+../soe_snn.py --model bioclinicalbert \
+              --shots 16 \
+              --path "$1" \
+              --eval_iter 3 \
+              --log_dir soe_snn 2>/dev/null
+
+printf "\nDone!\n"

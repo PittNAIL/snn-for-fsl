@@ -32,7 +32,9 @@ def main():
         # Generates GPT-2 responses
         prompt_fn = lambda s: f"{s[:1_024 - len(prompt) - 2]}. {prompt}"
         df_test["question"] = df_test["text"].map(prompt_fn)
-        df_test["response"] = df_test["question"].map(lambda q: gpt2(q, max_length=1_024)[0]["generated_text"])
+        df_test["response"] = df_test["question"].map(
+            lambda q: gpt2(q, max_length=1_024)[0]["generated_text"]
+        )
         df_test["correct"] = df_test["label"].map(lambda l: " ".join(l.lower().split(".")))
 
         # Saves the results for human evaluation

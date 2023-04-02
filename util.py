@@ -11,6 +11,25 @@ ENCODE_PHENOTYPE = {
 }
 
 
+def generate_training_triplets(df_train: pd.DataFrame) -> list[tuple[str, str, int]]:
+    """Generates triplets for training SNNs."""
+
+    triplets = []
+    seen = set()
+    for _, (text1, label1, emb1, lbl1) in df_train.iterrows():
+        for _, (text2, label2, emb2, lbl2) in df_train.iterrows():
+            if text1 == text2 and lbl1 == lbl2:
+                continue
+
+            if (text1, text2) in seen or (text2, text1) in seen:
+                continue
+
+            seen.add((text1, text2))
+            triplets.append((emb1, emb2, int(label1 == label2)))
+
+    return triplets
+
+
 def get_codename(model: str) -> str:
     """Gets the codename by the model name."""
 
@@ -27,6 +46,26 @@ def get_codename(model: str) -> str:
         return "gpt2"
 
     raise ValueError(f"Unknown model: {model}")
+
+
+def gpt2_annotations(shots: int) -> pd.DataFrame:
+    """Obtains GPT-2 annotations for the given number of shots."""
+
+    options = ", ".join(" ".join(val.lower().split(".")) for val in ENCODE_PHENOTYPE.keys())
+    prompt = f"options are {options}. type of disease"
+
+    _, df_test = sample("phenotype.csv", shots, random_state=0)
+    df_test.reset_index(inplace=True)
+
+    prompt_fn = lambda s: f"{s[:1_024 - len(prompt) - 2]}. {prompt}"
+    df_test["question"] = df_test["text"].map(prompt_fn)
+
+    annotations = pd.read_csv("gpt2-medium-annotations.csv")
+    annotations.reset_index(inplace=True)
+
+    df = annotations.loc[annotations["question"].isin(df_test["question"])]
+
+    return df
 
 
 def parse_args() -> argparse.Namespace:
