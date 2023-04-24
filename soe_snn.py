@@ -164,9 +164,9 @@ def main() -> None:
         to_save.append(out.tolist())
 
     precision, recall, fscore = metrics.mean(dim=0).tolist()
-    print(f"Precision: {precision:.2}")
-    print(f"Recall:    {recall:.2}")
-    print(f"F-score:   {fscore:.2}")
+    print(f"{precision=:.2}")
+    print(f"{recall=:.2}")
+    print(f"{fscore=:.2}")
 
     filename = f"{args.log_dir}_{args.model}_{args.shots}.pt"
     torch.save(torch.tensor(list(zip(*to_save))), os.path.join(args.log_dir, filename))
