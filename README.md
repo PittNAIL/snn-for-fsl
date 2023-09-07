@@ -1,5 +1,10 @@
 # snn-for-fsl
 
+Code for the Paper "Few-Shot Learning for Clinical Natural Language Processing Using Siamese Neural
+Networks: Algorithm Development and Validation Study"
+
+Published at [JMIR AI][doi]
+
 ## Programs
 
 - [`gpt2.py`](gpt2.py): GPT-2
@@ -26,5 +31,5 @@ $ ./eval_gpt2.py
 
 [snn-for-fsl]: https://github.com/oniani/snn-for-fsl
 [david]: https://oniani.ai
+[doi]: https://doi.org/10.2196/44293
 [license]: LICENSE
-

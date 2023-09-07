@@ -72,7 +72,6 @@ def parse_args() -> argparse.Namespace:
     """Parses the command line arguments."""
 
     parser = argparse.ArgumentParser("Pretrained SNN Benchmarking")
-
     parser.add_argument("--model", type=str, help="model type", required=True)
     parser.add_argument("--shots", type=int, help="number of shots", required=True)
     parser.add_argument("--path", type=str, help="path to the dataset", required=True)
