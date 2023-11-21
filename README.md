@@ -25,11 +25,6 @@ $ ./eval_gpt2.py
 
 [snn-for-fsl][snn-for-fsl] has been implemented by [David Oniani][david].
 
-## License
-
-[MIT License][license]
-
 [snn-for-fsl]: https://github.com/oniani/snn-for-fsl
 [david]: https://oniani.ai
 [doi]: https://doi.org/10.2196/44293
-[license]: LICENSE
