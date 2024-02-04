@@ -15,10 +15,10 @@ Published at [JMIR AI][doi]
 ## Model Evaluation
 
 ```console
-$ cd eval
-$ ./eval_pt_snn path_to_dataset.csv
-$ ./eval_soe_snn path_to_dataset.csv
-$ ./eval_gpt2.py
+cd eval
+./eval_pt_snn path_to_dataset.csv
+./eval_soe_snn path_to_dataset.csv
+./eval_gpt2.py
 ```
 
 ## Implementation
